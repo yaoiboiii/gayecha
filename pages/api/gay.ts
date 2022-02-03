@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Low, JSONFile } from "lowdb";
+import { Low, JSONFile, Memory } from "lowdb";
 import superagent from "superagent";
 export default async function handler(
   req: NextApiRequest,
@@ -8,7 +8,7 @@ export default async function handler(
   type Data = {
     posts: { file_url: string; sample_url: string }[];
   };
-  const adapter = new JSONFile<Data>("db.json");
+  const adapter = new Memory<Data>();
   const db = new Low<Data>(adapter);
   await db.read();
   db.data ||= { posts: [] };
