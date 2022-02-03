@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useState } from "react";
-import redaxios from "redaxios";
 const Home: NextPage = () => {
   return (
     <div>
